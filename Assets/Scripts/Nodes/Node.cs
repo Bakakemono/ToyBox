@@ -13,21 +13,34 @@ public abstract class Node {
         get { return status; }
     }
 
-    protected Node[] _childrenNode;
+    protected Node[] _childNodes;
     protected int _nextIndexUse = 0;
+    BaseBehaviorTree _root;
 
     //public Node(int successNodeRequired = 0, params Node[] nodes) {
     //    _successNodeRequired = successNodeRequired;
     //    _childrenNode = nodes;
     //}
 
-    public Node() {
-        _childrenNode = new Node[char.MaxValue];
+    public Node(BaseBehaviorTree root) {
+        _childNodes = new Node[char.MaxValue];
+        _root = root;
     }
 
+    public virtual void RegisterComponent() { }
+
     public void AddNode(Node newNode) {
-        _childrenNode[_nextIndexUse] = newNode;
+        _childNodes[_nextIndexUse] = newNode;
     }
 
     public abstract void Execute();
+
+    public virtual void ResetNode() {
+        status = Status.RUNNING;
+    }
+    public void ResetChildNodes() {
+        foreach(Node resetingNode in _childNodes) {
+            resetingNode.ResetNode();
+        }
+    }
 }

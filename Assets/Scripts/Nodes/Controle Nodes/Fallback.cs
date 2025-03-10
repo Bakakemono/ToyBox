@@ -1,20 +1,25 @@
 using UnityEngine;
 
+// Execute all child nodes until one return success or all return failure.
 public class Fallback : Node {
+    public Fallback(BaseBehaviorTree root) : base(root) { }
+
     public override void Execute() {
-        foreach(Node _childnode in _childrenNode) {
-            if(_childnode._status == Status.SUCCESS) {
+        foreach(Node node in _childNodes) {
+            if(node._status == Status.SUCCESS) {
                 status = Status.SUCCESS;
+                ResetChildNodes();
                 return;
             }
-            if(_childnode._status == Status.FAILURE) {
+            if(node._status == Status.FAILURE) {
                 continue;
             }
-            if(_childnode._status == Status.RUNNING) {
-                _childnode.Execute();
+            if(node._status == Status.RUNNING) {
+                node.Execute();
                 return;
             }
         }
         status = Status.FAILURE;
+        ResetChildNodes();
     }
 }
