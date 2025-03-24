@@ -15,7 +15,7 @@ public abstract class Node {
 
     protected Node[] _childNodes;
     protected int _nextIndexUse = 0;
-    BaseBehaviorTree _root;
+    protected BaseBehaviorTree _root;
 
     //public Node(int successNodeRequired = 0, params Node[] nodes) {
     //    _successNodeRequired = successNodeRequired;
@@ -27,7 +27,8 @@ public abstract class Node {
         _root = root;
     }
 
-    public virtual void RegisterComponent() { }
+    // To remember
+    //public virtual void RegisterComponent(params Component[] components) { }
 
     public void AddNode(Node newNode) {
         _childNodes[_nextIndexUse] = newNode;

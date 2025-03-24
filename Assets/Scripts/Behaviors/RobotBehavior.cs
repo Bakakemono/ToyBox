@@ -6,6 +6,10 @@ public class RobotBehavior : BaseBehaviorTree {
     Rigidbody _rigidbody;
     Sequence _tree;
 
+    public Vector3[] _checkPoints;
+    private int _nmbCheckPoint = 10;
+    public int _currentCheckPointIndex = -1;
+
     private void Awake() {
         _transform = transform;
         _rigidbody = GetComponent<Rigidbody>();
@@ -18,10 +22,10 @@ public class RobotBehavior : BaseBehaviorTree {
 
     void SetupBehaviorTree() {
         _tree = new Sequence(this);
-        
 
         Sequence searchEnemy = new Sequence(this);
-        
-        
+        _tree.AddNode(searchEnemy);
+
+        SelectNextPoint selectNextPoint = new SelectNextPoint(this);
     }
 }
