@@ -4,7 +4,6 @@ using UnityEngine;
 public class Parallel : Node {
     public Parallel(BaseBehaviorTree root) : base(root) { }
 
-
     protected int _successNodeRequired = 0;
 
     public void SetSuccessfulNodeRequired(char number) {
@@ -15,25 +14,26 @@ public class Parallel : Node {
         int successCount = 0;
         int failureCount = 0;
 
-        foreach(Node node in _childNodes) {
-            if(node._status == Status.SUCCESS) {
+        for(int i = 0; i < _numberOfNode; i++) {
+            if(_childNodes[i]._status == Status.SUCCESS) {
                 successCount++;
                 return;
             }
-            if(node._status == Status.FAILURE) {
+            if(_childNodes[i]._status == Status.FAILURE) {
                 failureCount++;
                 continue;
             }
-            if(node._status == Status.RUNNING) {
-                node.Execute();
+            if(_childNodes[i]._status == Status.RUNNING) {
+                _childNodes[i].Execute();
             }
         }
+
         if(successCount >= _successNodeRequired) {
-            status = Status.SUCCESS;
+            _localStatus = Status.SUCCESS;
             ResetChildNodes();
         }
         else if(failureCount >= _childNodes.Length) {
-            status = Status.FAILURE;
+            _localStatus = Status.FAILURE;
             ResetChildNodes();
         }
     }

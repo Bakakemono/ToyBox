@@ -6,10 +6,10 @@ public class Invert : Node {
     public override void Execute() {
         if(_childNodes.Length > 0) {
             if(_childNodes[0]._status == Status.SUCCESS) {
-                status = Status.FAILURE;
+                _localStatus = Status.FAILURE;
             }
             else if(_childNodes[0]._status == Status.FAILURE) {
-                status = Status.SUCCESS;
+                _localStatus = Status.SUCCESS;
             }
             else if(_childNodes[0]._status == Status.RUNNING) {
                 _childNodes[0].Execute();

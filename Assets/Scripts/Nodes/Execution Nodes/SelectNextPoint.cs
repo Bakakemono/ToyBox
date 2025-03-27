@@ -8,5 +8,6 @@ public class SelectNextPoint : Node {
     public override void Execute() {
         RobotBehavior robotBehavior = (RobotBehavior)_root;
         robotBehavior._currentCheckPointIndex = (robotBehavior._currentCheckPointIndex + 1) % robotBehavior._checkPoints.Length;
+        _localStatus = Status.SUCCESS;
     }
 }

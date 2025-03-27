@@ -7,21 +7,21 @@ public class Sequence : Node {
     public Sequence(BaseBehaviorTree root) : base(root) {}
 
     public override void Execute() {
-        foreach(Node childnode in _childNodes) {
-            if(childnode._status == Status.FAILURE) {
-                status = Status.FAILURE;
+        for(int i = 0; i < _numberOfNode; i++) {
+            if(_childNodes[i]._status == Status.FAILURE) {
+                _localStatus = Status.FAILURE;
                 ResetChildNodes();
                 return;
             }
-            if(childnode._status == Status.SUCCESS) {
+            if(_childNodes[i]._status == Status.SUCCESS) {
                 continue;
             }
-            if(childnode._status == Status.RUNNING) {
-                childnode.Execute();
+            if(_childNodes[i]._status == Status.RUNNING) {
+                _childNodes[i].Execute();
                 return;
             }
         }
-        status = Status.SUCCESS;
+        _localStatus = Status.SUCCESS;
         ResetChildNodes();
     }
 }

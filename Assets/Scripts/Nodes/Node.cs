@@ -8,13 +8,13 @@ public abstract class Node {
         RUNNING
     }
 
-    protected Status status = Status.RUNNING;
+    protected Status _localStatus = Status.RUNNING;
     public Status _status {
-        get { return status; }
+        get { return _localStatus; }
     }
 
     protected Node[] _childNodes;
-    protected int _nextIndexUse = 0;
+    protected int _numberOfNode = 0;
     protected BaseBehaviorTree _root;
 
     //public Node(int successNodeRequired = 0, params Node[] nodes) {
@@ -31,17 +31,18 @@ public abstract class Node {
     //public virtual void RegisterComponent(params Component[] components) { }
 
     public void AddNode(Node newNode) {
-        _childNodes[_nextIndexUse] = newNode;
+        _childNodes[_numberOfNode] = newNode;
+        _numberOfNode++;
     }
 
     public abstract void Execute();
 
     public virtual void ResetNode() {
-        status = Status.RUNNING;
+        _localStatus = Status.RUNNING;
     }
     public void ResetChildNodes() {
-        foreach(Node resetingNode in _childNodes) {
-            resetingNode.ResetNode();
+        for(int i = 0; i < _numberOfNode; i++) {
+            _childNodes[i].ResetNode();
         }
     }
 }
