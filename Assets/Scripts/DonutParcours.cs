@@ -3,20 +3,40 @@ using UnityEngine;
 
 public class DonutParcours : MonoBehaviour
 {
-    float _ringRadius = 5f;
-    float _rotationPerSecond = 0.1f;
+    [SerializeField] GameObject _prefab;
+    [SerializeField] int _sphereNmb = 1;
+    private GameObject[] _spheres;
+    [SerializeField] float _ringRadius = 5f;
+    [SerializeField] float _rotationPerSecond = 0.1f;
 
-    float _subRingRadius = 1.5f;
-    float _subRingRotationPerSecond = 0.8f;
+    [SerializeField] float _subRingRadius = 1.5f;
+    [SerializeField] float _subRingRotationPerSecond = 0.8f;
+
+    private void Start() {
+        _spheres = new GameObject[_sphereNmb];
+
+        for(int i = 0; i < _sphereNmb; i++) {
+            _spheres[i] = Instantiate(_prefab);
+        }
+    }
 
     private void Update() {
-        float alteredRingRadius = _ringRadius + _subRingRadius * Mathf.Sin(Mathf.PI * 2 * Time.time * _subRingRotationPerSecond);
-        Vector3 ringPos = new Vector3(
-            alteredRingRadius * Mathf.Sin(Mathf.PI * 2 * Time.time * _rotationPerSecond),
-            alteredRingRadius * Mathf.Cos(Mathf.PI * 2 * Time.time * _rotationPerSecond),
-            _subRingRadius * Mathf.Cos(Mathf.PI * 2 * Time.time * _subRingRotationPerSecond)
-        );
+        for(int i = 0; i < _sphereNmb; i++) {
+            float alteredRingRadius = _ringRadius + _subRingRadius * Mathf.Sin(Mathf.PI * 2 * (Time.time + _subRingRotationPerSecond * (i / _sphereNmb - 1)) * _subRingRotationPerSecond);
+            Vector3 ringPos = new Vector3(
+                alteredRingRadius * Mathf.Sin(Mathf.PI * 2 * (Time.time + _rotationPerSecond * (i / _sphereNmb - 1)) * _rotationPerSecond),
+                alteredRingRadius * Mathf.Cos(Mathf.PI * 2 * (Time.time + _rotationPerSecond * (i / _sphereNmb - 1)) * _rotationPerSecond),
+                _subRingRadius * Mathf.Cos(Mathf.PI * 2 * (Time.time + _subRingRotationPerSecond * (i / _sphereNmb - 1)) * _subRingRotationPerSecond)
+            );
 
-        transform.position = ringPos;
+            //transform.position = ringPos;
+            _spheres[i].transform.position = ringPos;
+        }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(Vector3.zero, _ringRadius);
     }
 }
