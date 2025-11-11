@@ -22,11 +22,11 @@ public class DonutParcours : MonoBehaviour
 
     private void Update() {
         for(int i = 0; i < _sphereNmb; i++) {
-            float alteredRingRadius = _ringRadius + _subRingRadius * Mathf.Sin(Mathf.PI * 2 * (Time.time + _subRingRotationPerSecond * (i / _sphereNmb - 1)) * _subRingRotationPerSecond);
+            float alteredRingRadius = _ringRadius + _subRingRadius * Mathf.Sin(Mathf.PI * 2 * (Time.time + _subRingRotationPerSecond * ((float)i / (float)_sphereNmb - 1f)) * _subRingRotationPerSecond);
             Vector3 ringPos = new Vector3(
-                alteredRingRadius * Mathf.Sin(Mathf.PI * 2 * (Time.time + _rotationPerSecond * (i / _sphereNmb - 1)) * _rotationPerSecond),
-                alteredRingRadius * Mathf.Cos(Mathf.PI * 2 * (Time.time + _rotationPerSecond * (i / _sphereNmb - 1)) * _rotationPerSecond),
-                _subRingRadius * Mathf.Cos(Mathf.PI * 2 * (Time.time + _subRingRotationPerSecond * (i / _sphereNmb - 1)) * _subRingRotationPerSecond)
+                alteredRingRadius * Mathf.Sin(Mathf.PI * 2 * (Time.time + _rotationPerSecond * ((float)i / (float)_sphereNmb - 1f)) * _rotationPerSecond),
+                alteredRingRadius * Mathf.Cos(Mathf.PI * 2 * (Time.time + _rotationPerSecond * ((float)i / (float)_sphereNmb - 1f)) * _rotationPerSecond),
+                _subRingRadius * Mathf.Cos(Mathf.PI * 2 * (Time.time + _subRingRotationPerSecond * ((float)i / (float)_sphereNmb - 1f)) * _subRingRotationPerSecond)
             );
 
             //transform.position = ringPos;
