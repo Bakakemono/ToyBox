@@ -57,10 +57,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Burn: 0
+    - _BurningSpeed: 5
+    - _EnableBurn: 1
     - _EnableExternalAlpha: 0
+    - _MaxTransitionDist: 1.5
+    - _MinTransitionDist: 0.1
     - _NoiseDefinition: 100
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _StoppedTime: 0
     - _TransitionDist: 0
     - _TransitionEndDist: 0
     - _ZWrite: 0
