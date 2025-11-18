@@ -10,16 +10,18 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public struct Circle {
+public struct Triangle {
     public Vector2[] _points;
-    public Vector2 _position;
-    public float _radius;
+    public Vector2 _circumCenter;
+    public float _circumCenterRadius;
      
-    public Circle(Vector2[] points, Vector2 position, float radius) {
+    public Triangle(Vector2[] points, Vector2 position, float radius) {
         _points = points;
-        _position = position;
-        _radius = radius;
+        _circumCenter = position;
+        _circumCenterRadius = radius;
     }
+
+    
 }
 
 public class DelaunayTriangulation : MonoBehaviour {
@@ -32,7 +34,7 @@ public class DelaunayTriangulation : MonoBehaviour {
 
     [SerializeField] float _pointSize = 0.05f;
 
-    List<Circle> _circleList = new List<Circle>();
+    List<Triangle> _circleList = new List<Triangle>();
 
     [Header("Debug")]
     [SerializeField] bool _regeneratePoints = false;
@@ -49,7 +51,7 @@ public class DelaunayTriangulation : MonoBehaviour {
             _regeneratePoints = false;
         }
         if(_generateCircles) {
-            _circleList = new List<Circle>();
+            _circleList = new List<Triangle>();
             //GenerateTrianglesCircle();
             StartCoroutine(EC_Triangulate());
             _generateCircles = false;
@@ -76,7 +78,7 @@ public class DelaunayTriangulation : MonoBehaviour {
             for(int i = 1; i < _points.Count; i++) {
                 float currentLength = (_points[i] - originPoint).sqrMagnitude;
                 if(currentLength < smallestLengthFound) {
-                    smallestLengthFound = currentIndex;
+                    smallestLengthFound = currentLength;
                     currentIndex = i;
                 }
             }
@@ -137,7 +139,7 @@ public class DelaunayTriangulation : MonoBehaviour {
                     }
 
                     if(addCircle) {
-                        _circleList.Add(new Circle(points, circlePos, r));
+                        _circleList.Add(new Triangle(points, circlePos, r));
                     }
                 }
             }
@@ -195,7 +197,7 @@ public class DelaunayTriangulation : MonoBehaviour {
                     }
 
                     if(addCircle) {
-                        _circleList.Add(new Circle(points, circlePos, r));
+                        _circleList.Add(new Triangle(points, circlePos, r));
                         yield return new WaitForSeconds(1f / _circlePerSecondGeneration);
                     }
                 }
