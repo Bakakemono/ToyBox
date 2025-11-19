@@ -9,22 +9,34 @@ public class CustomMask : MonoBehaviour {
 
     bool _burnEnabled = false;
 
+    float _startTime = 0;
+    float _burningTime = 0;
+
 
     private void Update() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _material = _spriteRenderer.material;
 
         _maxWidth = _spriteRenderer.bounds.extents.magnitude;
+
+        _burningTime = _maxWidth * 2 / _spriteRenderer.material.GetFloat("_BurningSpeed");
     }
     private void FixedUpdate() {
-        if(!_burnEnabled && Vector2.SqrMagnitude(_objectTransform.position - transform.position) < Mathf.Pow(_material.GetFloat("_MinTransitionDist") + _maxWidth, 2f)) {
+
+        
+        if(!_burnEnabled && _spriteRenderer.bounds.SqrDistance(_objectTransform.position) <= 0f) {
             _material.SetFloat("_EnableBurn", 0f);
-            _material.SetFloat("_StoppedTime", Time.time);
+            _startTime = Time.time;
+            _material.SetFloat("_StoppedTime", _startTime);
             _material.SetVector("_StartPos", _objectTransform.position);
             _burnEnabled = true;
         }
         else if(!_burnEnabled) {
             _material.SetVector("_StartPos", _objectTransform.position);
+        }
+
+        if(_burnEnabled && (_startTime + _burningTime) < Time.time) {
+            Destroy(gameObject);
         }
     }
 

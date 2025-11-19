@@ -130,7 +130,11 @@
             "m_Id": "fe2c5622e27b4b25a85526ec645aa8fc"
         }
     ],
-    "m_GroupDatas": [],
+    "m_GroupDatas": [
+        {
+            "m_Id": "e5350640abce4d8880bd007076e72eb1"
+        }
+    ],
     "m_StickyNoteDatas": [],
     "m_Edges": [
         {
@@ -1348,8 +1352,8 @@
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "overrideHLSLDeclaration": true,
+    "hlslDeclarationOverride": 3,
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
@@ -1402,17 +1406,17 @@
     "m_Type": "UnityEditor.ShaderGraph.PositionNode",
     "m_ObjectId": "550afc9a7cd24080974445d7d5cf5ce6",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "e5350640abce4d8880bd007076e72eb1"
     },
     "m_Name": "Position",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1589.599853515625,
-            "y": 283.1999816894531,
-            "width": 208.0,
-            "height": 312.0000305175781
+            "x": -1643.199951171875,
+            "y": 151.1999969482422,
+            "width": 208.0001220703125,
+            "height": 312.0
         }
     },
     "m_Slots": [
@@ -3225,17 +3229,17 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "e25f2cb5b58943d3ade59155403131bf",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "e5350640abce4d8880bd007076e72eb1"
     },
     "m_Name": "Property",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1538.39990234375,
-            "y": 613.5999755859375,
-            "width": 122.39990234375,
-            "height": 33.60009765625
+            "x": -1591.9998779296875,
+            "y": 481.6000061035156,
+            "width": 122.4000244140625,
+            "height": 33.599945068359378
         }
     },
     "m_Slots": [
@@ -3294,6 +3298,17 @@
     "m_EnumValues": [
         0
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.GroupData",
+    "m_ObjectId": "e5350640abce4d8880bd007076e72eb1",
+    "m_Title": "Distance between points and object",
+    "m_Position": {
+        "x": -1668.800048828125,
+        "y": 90.39999389648438
+    }
 }
 
 {
@@ -3531,17 +3546,17 @@
     "m_Type": "UnityEditor.ShaderGraph.DistanceNode",
     "m_ObjectId": "f1ad38b55d8342148538710607112156",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "e5350640abce4d8880bd007076e72eb1"
     },
     "m_Name": "Distance",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1271.9998779296875,
-            "y": 340.79998779296877,
+            "x": -1325.599853515625,
+            "y": 208.79998779296876,
             "width": 207.9998779296875,
-            "height": 301.5999755859375
+            "height": 301.6000061035156
         }
     },
     "m_Slots": [

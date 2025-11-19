@@ -63,7 +63,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _MaxTransitionDist: 1.5
     - _MinTransitionDist: 0.1
-    - _NoiseDefinition: 100
+    - _NoiseDefinition: 300
     - _QueueControl: 0
     - _QueueOffset: 0
     - _StoppedTime: 0
