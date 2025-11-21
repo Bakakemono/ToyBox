@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class CustomMask : MonoBehaviour {
@@ -11,9 +12,9 @@ public class CustomMask : MonoBehaviour {
 
     float _startTime = 0;
     float _burningTime = 0;
+    bool _skipFirstFrame = false;
 
-
-    private void Update() {
+    private void Start() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _material = _spriteRenderer.material;
 
@@ -22,8 +23,6 @@ public class CustomMask : MonoBehaviour {
         _burningTime = _maxWidth * 2 / _spriteRenderer.material.GetFloat("_BurningSpeed");
     }
     private void FixedUpdate() {
-
-        
         if(!_burnEnabled && _spriteRenderer.bounds.SqrDistance(_objectTransform.position) <= 0f) {
             _material.SetFloat("_EnableBurn", 0f);
             _startTime = Time.time;
