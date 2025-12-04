@@ -6,11 +6,11 @@ public class Portal : MonoBehaviour {
     [SerializeField] Transform _pairPortal;
 
     private void OnEnable() {
-        RenderPipelineManager.beginCameraRendering += UpdateCamera;
+        //RenderPipelineManager.beginCameraRendering += UpdateCamera;
     }
 
     private void OnDisable() {
-        RenderPipeline.beginCameraRendering -= UpdateCamera;
+        //RenderPipeline.beginCameraRendering -= UpdateCamera;
     }
 
     void UpdateCamera(Camera camera) {
