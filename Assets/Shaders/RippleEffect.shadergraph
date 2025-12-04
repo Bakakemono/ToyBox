@@ -121,9 +121,6 @@
             "m_Id": "9e686cdcd3644c6bbc70262c0706df9a"
         },
         {
-            "m_Id": "36baafcd2f494134a17a7a25198cb857"
-        },
-        {
             "m_Id": "b702be95c8a742bca10d50df2db0a2f2"
         },
         {
@@ -155,6 +152,9 @@
         },
         {
             "m_Id": "325dcf35439f46c5ba5908f8b8deedcb"
+        },
+        {
+            "m_Id": "4a71dad79a6b4cc7822a9a934ff0def8"
         }
     ],
     "m_GroupDatas": [
@@ -302,20 +302,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "36baafcd2f494134a17a7a25198cb857"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "db73873ea6144c75a8334845778e43b1"
-                },
-                "m_SlotId": 1
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "3b8be55222ca46eca9ef8a652c642e67"
                 },
                 "m_SlotId": 1
@@ -351,6 +337,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "72d9f52ed02f4bb3b9164d2dd948789f"
+                },
+                "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "4a71dad79a6b4cc7822a9a934ff0def8"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "db73873ea6144c75a8334845778e43b1"
                 },
                 "m_SlotId": 1
             }
@@ -778,8 +778,8 @@
     "m_ObjectId": "011b26a7c441442b86a88cdc2fa1445a",
     "m_Title": "Ripple Center",
     "m_Position": {
-        "x": -3951.199951171875,
-        "y": -227.199951171875
+        "x": -3951.2001953125,
+        "y": -227.20001220703126
     }
 }
 
@@ -1962,42 +1962,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
-    "m_ObjectId": "36baafcd2f494134a17a7a25198cb857",
-    "m_Group": {
-        "m_Id": "60afe309d6914cf4bef2fe071c69c291"
-    },
-    "m_Name": "Property",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -3675.19970703125,
-            "y": 1379.199951171875,
-            "width": 141.599853515625,
-            "height": 33.60009765625
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "823eadd97424416394c011fb878cbac4"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_Property": {
-        "m_Id": "04a5e850af7b466488a1e3781855423f"
-    }
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
     "m_ObjectId": "36c112acb6da458a823b39e48b27fe8d",
     "m_Id": 0,
@@ -2269,6 +2233,42 @@
     "m_Slots": [
         {
             "m_Id": "804a3d1ee7454987988869bc454302aa"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "04a5e850af7b466488a1e3781855423f"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "4a71dad79a6b4cc7822a9a934ff0def8",
+    "m_Group": {
+        "m_Id": "60afe309d6914cf4bef2fe071c69c291"
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -3667.2001953125,
+            "y": 1361.60009765625,
+            "width": 141.599853515625,
+            "height": 33.5999755859375
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "b36439a39d8e48a19be2346d8709165c"
         }
     ],
     "synonyms": [],
@@ -2614,8 +2614,8 @@
     "m_ObjectId": "60afe309d6914cf4bef2fe071c69c291",
     "m_Title": "Ripple Speed",
     "m_Position": {
-        "x": -3700.7998046875,
-        "y": 1217.599853515625
+        "x": -3692.80029296875,
+        "y": 1217.5999755859375
     }
 }
 
@@ -3099,21 +3099,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "823eadd97424416394c011fb878cbac4",
-    "m_Id": 0,
-    "m_DisplayName": "RippleSpeed",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "8486cfcc10094a3c96207a7989a7d38b",
     "m_Group": {
@@ -3260,8 +3245,8 @@
     "m_ObjectId": "8943daa29acf4b1a85560cbf27183b8d",
     "m_Title": "Counter Ripple Center",
     "m_Position": {
-        "x": -4353.599609375,
-        "y": 724.800048828125
+        "x": -4353.6005859375,
+        "y": 724.8001708984375
     }
 }
 
@@ -3423,7 +3408,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 2.0,
+        "e00": 1.2000000476837159,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
@@ -4057,6 +4042,21 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "b36439a39d8e48a19be2346d8709165c",
+    "m_Id": 0,
+    "m_DisplayName": "RippleSpeed",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "b5a8e1896f7340a1abc4b14c1b8bf43e",
     "m_Id": 0,
     "m_DisplayName": "Alpha",
@@ -4680,8 +4680,8 @@
     "m_ObjectId": "dd72b3da2079416d9e0ff0ef37f13d36",
     "m_Title": "Ripple Speed",
     "m_Position": {
-        "x": -3515.199951171875,
-        "y": 186.4000244140625
+        "x": -3515.2001953125,
+        "y": 186.40003967285157
     }
 }
 
@@ -5182,9 +5182,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1581.60009765625,
-            "y": 123.20000457763672,
-            "width": 208.0,
+            "x": -1615.2000732421875,
+            "y": 138.4000244140625,
+            "width": 207.9998779296875,
             "height": 334.3999938964844
         }
     },
