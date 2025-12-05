@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_RippleEffect
-  m_Shader: {fileID: -6465566751694194690, guid: 9243a2686b2b5c748ab1b386a39a9659, type: 3}
+  m_Name: m_portal
+  m_Shader: {fileID: -6465566751694194690, guid: 19a514ba67e4e5140ae6e2f48c2426c9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _PortalTex:
+        m_Texture: {fileID: 8400000, guid: 3fa38ede1a3fca94298c4567a12d81ca, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,17 +58,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _RippleCount: 0.39
-    - _RippleSpeed: 2.22
-    - _RippleStrength: 2.74
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RippleCenter: {r: 12.33, g: 16.43, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &8483156403127837256
+--- !u!114 &5588996796527546042
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
