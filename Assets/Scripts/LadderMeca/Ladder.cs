@@ -1,3 +1,5 @@
+using System.Net.Http.Headers;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -49,10 +51,15 @@ public class Ladder : MonoBehaviour {
     private void Start() {
         _data = new LadderData(transform, _bottomPos, _topPos, _bottomLandingPos, _topLandingPos);
 
-        _data._localBottomPos = transform.InverseTransformPoint(new Vector3(_bottomPos.x / transform.localScale.x, _bottomPos.y / transform.localScale.y));
-        _data._localTopPos = transform.InverseTransformPoint(new Vector3(_topPos.x / transform.localScale.x, _topPos.y / transform.localScale.y));
-        _data._localBottomLandingPos = transform.InverseTransformPoint(new Vector3(_bottomLandingPos.x / transform.localScale.x, _bottomLandingPos.y / transform.localScale.y));
-        _data._localTopLandingPos = transform.InverseTransformPoint(new Vector3(_topLandingPos.x / transform.localScale.x, _topLandingPos.y / transform.localScale.y));
+        Quaternion rotation = transform.localRotation;
+        transform.localRotation = Quaternion.identity;
+
+        _data._localBottomPos = transform.InverseTransformPoint(transform.position + (Vector3)_bottomPos);
+        _data._localTopPos = transform.InverseTransformPoint(transform.position + (Vector3)_topPos);
+        _data._localBottomLandingPos = transform.InverseTransformPoint(transform.position + (Vector3)_bottomLandingPos);
+        _data._localTopLandingPos = transform.InverseTransformPoint(transform.position + (Vector3)_topLandingPos);
+
+        transform.localRotation = rotation;
     }
 
     public LadderData GetData() {
@@ -64,8 +71,13 @@ public class Ladder : MonoBehaviour {
         if(!_DEBUG_DRAWGIRMOS)
             return;
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position + (Vector3)_bottomPos, transform.position + (Vector3)_topPos);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawLine(transform.position + (Vector3)_bottomPos, transform.position + (Vector3)_topPos);
+        
+        if(_data._ladderTransform != null) {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.TransformPoint((Vector3)_data._localBottomPos), transform.TransformPoint((Vector3)_data._localTopPos));
+        }
 
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(transform.position + (Vector3)_bottomLandingPos, 0.1f);

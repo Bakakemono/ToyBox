@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ladder
   _DEBUG_DRAWGIRMOS: 1
-  _bottomPos: {x: -0.5, y: -2}
-  _topPos: {x: -0.5, y: 2}
-  _bottomLandingPos: {x: -0.7, y: -2}
+  _bottomPos: {x: -0.6, y: -2}
+  _topPos: {x: -0.6, y: 2}
+  _bottomLandingPos: {x: -0.8, y: -2}
   _topLandingPos: {x: 0.3, y: 3}
 --- !u!61 &210718209
 BoxCollider2D:
@@ -610,7 +610,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1687052021
 SpriteRenderer:
   m_ObjectHideFlags: 0
