@@ -57,7 +57,7 @@ public class LadderCllimber : MonoBehaviour {
     void Climbing() {
         float HInput = Input.GetAxis("Vertical");
 
-        _rb.linearVelocity = (_data._ladderTransform.TransformPoint(_data._localTopPos) - _data._ladderTransform.TransformPoint(_data._localBottomPos).normalized * HInput * _speed;
+        _rb.linearVelocity = (_data._ladderTransform.TransformPoint(_data._localTopPos) - _data._ladderTransform.TransformPoint(_data._localBottomPos)).normalized * HInput * _speed;
 
         bool landing = false;
 
