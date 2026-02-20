@@ -6,10 +6,10 @@ public class LadderCllimber : MonoBehaviour {
 
     [SerializeField] float _speed = 3f;
     
-    // Ladder Params
+    // Climbing Params
     [SerializeField] ContactFilter2D _contactFilter;
     bool _climbingLadder = false;
-    LadderData _data;
+    LadderData _LadderData;
 
     Vector2 _ladderPos;
 
@@ -47,26 +47,28 @@ public class LadderCllimber : MonoBehaviour {
         Collider2D[] result = new Collider2D[1];
         
         if(Physics2D.OverlapBox((Vector2)transform.position + Vector2.right * 0.6f, Vector2.one * 0.2f, 0f, _contactFilter, result) > 0) {
-            _data = result[0].GetComponent<Ladder>().GetData();
-            _rb.gravityScale = 0;
-            _climbingLadder = true;
-            
+            //Debug.Log("ladderFound")
+            if(result[0].GetComponent<Ladder>()) {
+                _LadderData = result[0].GetComponent<Ladder>().GetData();
+                _rb.gravityScale = 0;
+                _climbingLadder = true;
+            }
         }
     }
 
     void Climbing() {
         float HInput = Input.GetAxis("Vertical");
 
-        _rb.linearVelocity = (_data._ladderTransform.TransformPoint(_data._localTopPos) - _data._ladderTransform.TransformPoint(_data._localBottomPos)).normalized * HInput * _speed;
+        _rb.linearVelocity = (_LadderData._ladderTransform.TransformPoint(_LadderData._localTopPos) - _LadderData._ladderTransform.TransformPoint(_LadderData._localBottomPos)).normalized * HInput * _speed;
 
         bool landing = false;
 
-        if (HInput > 0 && transform.position == _data._ladderTransform.TransformPoint(_data._localTopPos)) {
-            transform.position = _data._ladderTransform.TransformPoint(_data._localTopLandingPos);
+        if (HInput > 0 && transform.position == _LadderData._ladderTransform.TransformPoint(_LadderData._localTopPos)) {
+            transform.position = _LadderData._ladderTransform.TransformPoint(_LadderData._localTopLandingPos);
             landing = true;
         }
-        else if (HInput < 0 && transform.position == _data._ladderTransform.TransformPoint(_data._localBottomPos)) {
-            transform.position = _data._ladderTransform.TransformPoint(_data._localBottomLandingPos);
+        else if (HInput < 0 && transform.position == _LadderData._ladderTransform.TransformPoint(_LadderData._localBottomPos)) {
+            transform.position = _LadderData._ladderTransform.TransformPoint(_LadderData._localBottomLandingPos);
             landing = true;
         }
 
@@ -80,15 +82,15 @@ public class LadderCllimber : MonoBehaviour {
     void CorrectLadderPosition() {
         // Projected Player position on the ladder track.
         Vector3 projPos = Vector3.Project(
-            transform.position - _data._ladderTransform.TransformPoint(_data._localBottomPos),
-            (_data._localTopPos - _data._localBottomPos).normalized
+            transform.position - _LadderData._ladderTransform.TransformPoint(_LadderData._localBottomPos),
+            (_LadderData._localTopPos - _LadderData._localBottomPos).normalized
             );
 
-        _ladderPos = _data._ladderTransform.TransformPoint(_data._localBottomPos) + projPos;
+        _ladderPos = _LadderData._ladderTransform.TransformPoint(_LadderData._localBottomPos) + projPos;
 
         // Bottom and top player position on the ladder converted to world.
-        Vector2 _worldBottomPos = _data._ladderTransform.TransformPoint(_data._localBottomPos);
-        Vector2 _worldTopPos = _data._ladderTransform.TransformPoint(_data._localTopPos);
+        Vector2 _worldBottomPos = _LadderData._ladderTransform.TransformPoint(_LadderData._localBottomPos);
+        Vector2 _worldTopPos = _LadderData._ladderTransform.TransformPoint(_LadderData._localTopPos);
 
         // Corrected Clamp position to be sur player stay between in the right area.
         transform.position = new Vector2(Mathf.Clamp(_ladderPos.x, _worldBottomPos.x, _worldTopPos.x), Mathf.Clamp(_ladderPos.y, _worldBottomPos.y, _worldTopPos.y));
@@ -100,8 +102,8 @@ public class LadderCllimber : MonoBehaviour {
 
         Gizmos.color = Color.yellow;
 
-        Vector2 _worldBottomPos = _data._ladderTransform.TransformPoint(_data._localBottomPos);
-        Vector2 _worldTopPos = _data._ladderTransform.TransformPoint(_data._localTopPos);
+        Vector2 _worldBottomPos = _LadderData._ladderTransform.TransformPoint(_LadderData._localBottomPos);
+        Vector2 _worldTopPos = _LadderData._ladderTransform.TransformPoint(_LadderData._localTopPos);
 
 
         //Gizmos.DrawSphere(_ladderPos, 0.2f);
