@@ -42,22 +42,22 @@ public class Ladder : MonoBehaviour {
 
     LadderData _data;
 
-    [SerializeField] Vector2 _bottomPos;
-    [SerializeField] Vector2 _topPos;
+    [SerializeField] Vector2 _relativeBottomPos;
+    [SerializeField] Vector2 _relativeTopPos;
 
-    [SerializeField] Vector2 _bottomLandingPos;
-    [SerializeField] Vector2 _topLandingPos;
+    [SerializeField] Vector2 _relativeBottomLandingPos;
+    [SerializeField] Vector2 _relativeTopLandingPos;
 
     private void Start() {
-        _data = new LadderData(transform, _bottomPos, _topPos, _bottomLandingPos, _topLandingPos);
+        _data = new LadderData(transform, _relativeBottomPos, _relativeTopPos, _relativeBottomLandingPos, _relativeTopLandingPos);
 
         Quaternion rotation = transform.localRotation;
         transform.localRotation = Quaternion.identity;
 
-        _data._localBottomPos = transform.InverseTransformPoint(transform.position + (Vector3)_bottomPos);
-        _data._localTopPos = transform.InverseTransformPoint(transform.position + (Vector3)_topPos);
-        _data._localBottomLandingPos = transform.InverseTransformPoint(transform.position + (Vector3)_bottomLandingPos);
-        _data._localTopLandingPos = transform.InverseTransformPoint(transform.position + (Vector3)_topLandingPos);
+        _data._localBottomPos = transform.InverseTransformPoint(transform.position + (Vector3)_relativeBottomPos);
+        _data._localTopPos = transform.InverseTransformPoint(transform.position + (Vector3)_relativeTopPos);
+        _data._localBottomLandingPos = transform.InverseTransformPoint(transform.position + (Vector3)_relativeBottomLandingPos);
+        _data._localTopLandingPos = transform.InverseTransformPoint(transform.position + (Vector3)_relativeTopLandingPos);
 
         transform.localRotation = rotation;
     }
@@ -80,10 +80,10 @@ public class Ladder : MonoBehaviour {
         }
 
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position + (Vector3)_bottomLandingPos, 0.1f);
+        Gizmos.DrawSphere(transform.position + (Vector3)_relativeBottomLandingPos, 0.1f);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.position + (Vector3)_topLandingPos, 0.1f);
+        Gizmos.DrawSphere(transform.position + (Vector3)_relativeTopLandingPos, 0.1f);
     }
 #endif
 }
